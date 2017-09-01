@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -10325,99 +10325,6 @@ return jQuery;
 
 /***/ }),
 /* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modules_MobileMenu__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modules_RevealOnScroll__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_jquery__);
-
-
-
-
-var mobileMenu = new __WEBPACK_IMPORTED_MODULE_0__modules_MobileMenu__["a" /* default */]();
-var revealOnScroll = new __WEBPACK_IMPORTED_MODULE_1__modules_RevealOnScroll__["a" /* default */](__WEBPACK_IMPORTED_MODULE_2_jquery___default()('.feature-item'), '85%');
-var revealOnScroll = new __WEBPACK_IMPORTED_MODULE_1__modules_RevealOnScroll__["a" /* default */](__WEBPACK_IMPORTED_MODULE_2_jquery___default()('.testimonial'), '60%');
-
-
-/***/ }),
-/* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-
-
-class MobileMenu {
-  constructor() {
-    this.siteHeader = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.site-header');
-    this.menuIcon = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.site-header__menu-icon');
-    this.menuContent = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.site-header__menu-content');
-    this.events();
-  }
-
-  events() {
-    this.menuIcon.click(this.toggleTheMenu.bind(this));
-  }
-
-  toggleTheMenu() {
-    this.menuContent.toggleClass("site-header__menu-content--is-visible");
-    this.siteHeader.toggleClass("site-header--is-expanded");
-    this.menuIcon.toggleClass('site-header__menu-icon--close-x')
-  }
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (MobileMenu);
-
-
-/***/ }),
-/* 3 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_waypoints_lib_noframework_waypoints_js__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_waypoints_lib_noframework_waypoints_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__node_modules_waypoints_lib_noframework_waypoints_js__);
-
-
-
-class RevealOnScroll {
-  constructor(els, offset) {
-    this.itemsToReveal = els;
-    this.offsetPercentage = offset;
-    this.hideInitially();
-    this.createWaypoints();
-  }
-
-  hideInitially() {
-    console.log(this.itemsToReveal);
-    this.itemsToReveal.addClass("reveal-item");
-  }
-
-  createWaypoints() {
-    var that = this;
-    this.itemsToReveal.each(function() {
-      var currentItem = this;
-      new Waypoint({
-        element: currentItem,
-        handler: function() {
-          __WEBPACK_IMPORTED_MODULE_0_jquery___default()(currentItem).addClass("reveal-item--is-visible");
-        },
-        offset: that.offsetPercentage
-      });
-    });
-  }
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (RevealOnScroll);
-
-
-/***/ }),
-/* 4 */
 /***/ (function(module, exports) {
 
 /*!
@@ -11178,6 +11085,140 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
   Waypoint.Adapter = NoFrameworkAdapter
 }())
 ;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modules_MobileMenu__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modules_RevealOnScroll__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_StickyHeader__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_jquery__);
+
+
+
+
+
+var mobileMenu = new __WEBPACK_IMPORTED_MODULE_0__modules_MobileMenu__["a" /* default */]();
+new __WEBPACK_IMPORTED_MODULE_1__modules_RevealOnScroll__["a" /* default */](__WEBPACK_IMPORTED_MODULE_3_jquery___default()('.feature-item'), '85%');
+new __WEBPACK_IMPORTED_MODULE_1__modules_RevealOnScroll__["a" /* default */](__WEBPACK_IMPORTED_MODULE_3_jquery___default()('.testimonial'), '60%');
+var stickyHeader = new __WEBPACK_IMPORTED_MODULE_2__modules_StickyHeader__["a" /* default */]();
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+
+
+class MobileMenu {
+  constructor() {
+    this.siteHeader = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.site-header');
+    this.menuIcon = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.site-header__menu-icon');
+    this.menuContent = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.site-header__menu-content');
+    this.events();
+  }
+
+  events() {
+    this.menuIcon.click(this.toggleTheMenu.bind(this));
+  }
+
+  toggleTheMenu() {
+    this.menuContent.toggleClass("site-header__menu-content--is-visible");
+    this.siteHeader.toggleClass("site-header--is-expanded");
+    this.menuIcon.toggleClass('site-header__menu-icon--close-x')
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (MobileMenu);
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_waypoints_lib_noframework_waypoints_js__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_waypoints_lib_noframework_waypoints_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__node_modules_waypoints_lib_noframework_waypoints_js__);
+
+
+
+class RevealOnScroll {
+  constructor(els, offset) {
+    this.itemsToReveal = els;
+    this.offsetPercentage = offset;
+    this.hideInitially();
+    this.createWaypoints();
+  }
+
+  hideInitially() {
+    console.log(this.itemsToReveal);
+    this.itemsToReveal.addClass("reveal-item");
+  }
+
+  createWaypoints() {
+    var that = this;
+    this.itemsToReveal.each(function() {
+      var currentItem = this;
+      new Waypoint({
+        element: currentItem,
+        handler: function() {
+          __WEBPACK_IMPORTED_MODULE_0_jquery___default()(currentItem).addClass("reveal-item--is-visible");
+        },
+        offset: that.offsetPercentage
+      });
+    });
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (RevealOnScroll);
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_waypoints_lib_noframework_waypoints_js__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_waypoints_lib_noframework_waypoints_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__node_modules_waypoints_lib_noframework_waypoints_js__);
+
+
+
+class StickyHeader {
+  constructor() {
+    this.siteHeader = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.site-header');
+    this.headerTriggerElement = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.large-hero__title');
+    this.createHeaderWaypoint();
+  }
+
+  createHeaderWaypoint() {
+    var that = this;
+    new Waypoint({
+      element: that.headerTriggerElement[0],
+      handler: function(direction) {
+        if (direction == "down") {
+          that.siteHeader.addClass('site-header--dark')
+        }
+        else {
+          that.siteHeader.removeClass('site-header--dark')
+        }
+      }
+    });
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (StickyHeader);
+
 
 /***/ })
 /******/ ]);

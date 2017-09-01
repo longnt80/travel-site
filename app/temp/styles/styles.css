@@ -1131,9 +1131,14 @@ Instead edit gulp/templates/sprite */
 @media (min-width: 800px) {
 
 .site-header {
-    background-color: rgba(47,85,114, 0.3)
+    background-color: rgba(47,85,114, 0.3);
+    position: fixed
 
 }
+
+    .site-header--dark {
+      background-color: rgba(23, 51, 72, 0.85);
+    }
   }
 
 @media (min-width: 800px) {
@@ -1149,6 +1154,10 @@ Instead edit gulp/templates/sprite */
     left: 50%;
     -webkit-transform: translateX(-50%) scale(0.7);
             transform: translateX(-50%) scale(0.7);
+    -webkit-transition: -webkit-transform .3s ease-out;
+    transition: -webkit-transform .3s ease-out;
+    transition: transform .3s ease-out;
+    transition: transform .3s ease-out, -webkit-transform .3s ease-out;
     -webkit-transform-origin: 50% 0;
             transform-origin: 50% 0;
     background-color: #2f5572;
@@ -1162,6 +1171,10 @@ Instead edit gulp/templates/sprite */
       -webkit-transform: translateX(0);
               transform: translateX(0)
   }
+      .site-header--dark .site-header__logo {
+        -webkit-transform: scale(.56);
+                transform: scale(.56);
+      }
   }
 
 .site-header__logo__graphic {
@@ -1252,8 +1265,8 @@ Instead edit gulp/templates/sprite */
     opacity: 0;
     -webkit-transform: scale(1.2);
             transform: scale(1.2);
-    padding-top: 90px;
     text-align: center;
+    padding-top: 90px;
     -webkit-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
     position: relative; /* For z-index*/
@@ -1265,6 +1278,7 @@ Instead edit gulp/templates/sprite */
 @media (min-width: 800px) {
 
 .site-header__menu-content {
+      padding-top: 0;
       opacity: 1;
       z-index: 1;
       display: block;
