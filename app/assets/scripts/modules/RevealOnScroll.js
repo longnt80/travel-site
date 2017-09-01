@@ -10,7 +10,6 @@ class RevealOnScroll {
   }
 
   hideInitially() {
-    console.log(this.itemsToReveal);
     this.itemsToReveal.addClass("reveal-item");
   }
 
