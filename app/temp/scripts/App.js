@@ -11104,6 +11104,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+
 var mobileMenu = new __WEBPACK_IMPORTED_MODULE_0__modules_MobileMenu__["a" /* default */]();
 new __WEBPACK_IMPORTED_MODULE_1__modules_RevealOnScroll__["a" /* default */](__WEBPACK_IMPORTED_MODULE_4_jquery___default()('.feature-item'), '85%');
 new __WEBPACK_IMPORTED_MODULE_1__modules_RevealOnScroll__["a" /* default */](__WEBPACK_IMPORTED_MODULE_4_jquery___default()('.testimonial'), '70%');
@@ -11172,10 +11173,22 @@ class RevealOnScroll {
       var currentItem = this;
       new Waypoint({
         element: currentItem,
-        handler: function() {
-          __WEBPACK_IMPORTED_MODULE_0_jquery___default()(currentItem).addClass("reveal-item--is-visible");
+        handler: function(direction) {
+          if (direction == "down") {
+            __WEBPACK_IMPORTED_MODULE_0_jquery___default()(currentItem).addClass("reveal-item--is-visible");
+          }
         },
         offset: that.offsetPercentage
+      });
+
+      new Waypoint({
+        element: currentItem,
+        handler: function(direction) {
+          if (direction == "up") {
+            __WEBPACK_IMPORTED_MODULE_0_jquery___default()(currentItem).removeClass("reveal-item--is-visible");
+          }
+        },
+        offset: "100%"
       });
     });
   }
@@ -11201,6 +11214,7 @@ class RevealOnScroll {
 
 class StickyHeader {
   constructor() {
+    this.lazyImages = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.lazyload');
     this.siteHeader = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.site-header');
     this.headerTriggerElement = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.large-hero__title');
     this.createHeaderWaypoint();
@@ -11208,6 +11222,13 @@ class StickyHeader {
     this.headerLinks = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.primary-nav a')
     this.createPageSectionWaypoints();
     this.addSmoothScrolling();
+    this.refreshWaypoints();
+  }
+
+  refreshWaypoints() {
+    this.lazyImages.on('load', function() {
+      Waypoint.refreshAll();
+    });
   }
 
   addSmoothScrolling() {
