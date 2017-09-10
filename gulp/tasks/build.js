@@ -48,20 +48,14 @@ gulp.task('useminTrigger', ['cleanDist'], function() {
 gulp.task('usemin', ['styles', 'scripts'], function() {
   return gulp.src('./app/index.html')
     .pipe(usemin({
-      css: [function() {return rev()}, function() {return cssnano()}]
-      // js: [function() {return rev()}, function() {return uglify()}]
+      css: [function() {return rev()}, function() {return cssnano()}],
+      js: [function() {return rev()}, function() {return uglify()}]
     }))
     .pipe(gulp.dest('./docs'));
 });
 
 
-
-gulp.task('moveAppJs', ['usemin'], function() {
-  return gulp.src('./app/temp/scripts/App.js')
-    .pipe(gulp.dest('./docs/assets/scripts'));
-});
-
-gulp.task('preview', ['cleanDist', 'copyGeneralFiles', 'optimizeImages', 'useminTrigger', 'moveAppJs'], function() {
+gulp.task('preview', ['cleanDist', 'copyGeneralFiles', 'optimizeImages', 'useminTrigger', 'usemin'], function() {
   browserSync.init({
     notify: false,
     server:{
